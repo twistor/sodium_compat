@@ -337,7 +337,7 @@ abstract class ParagonIE_Sodium_Core_Util
      * @ref mbstring.func_overload
      *
      * @param string $str
-     * @return int
+     * @return int|false
      */
     public static function strlen($str)
     {
@@ -365,7 +365,7 @@ abstract class ParagonIE_Sodium_Core_Util
             throw new InvalidArgumentException('String expected');
         }
 
-        $length = isset($length) ? (int) $length : self::strlen($str);
+        $length = isset($length) ? (int) $length : (int) self::strlen($str);
 
         if ($length === 0) {
             return '';
@@ -434,7 +434,7 @@ abstract class ParagonIE_Sodium_Core_Util
      *
      * @return bool
      */
-    protected function isMbStringOverride()
+    protected static function isMbStringOverride()
     {
         static $mbstring;
 
